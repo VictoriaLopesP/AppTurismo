@@ -1,5 +1,5 @@
 Clone o repositório e use esses comandos
-
-dotnet restore
-dotnet build
-dotnet ef database update
+.
+1 - dotnet restore
+2 - dotnet build
+3 - dotnet ef database update
