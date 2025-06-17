@@ -1,0 +1,161 @@
+﻿@page
+@model AppTurismo.Pages.Notes.ViewNotesModel
+@{
+    ViewData["Title"] = "Anotações";
+}
+
+<style>
+    body {
+        background-color: #ECD9C7;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .turismo-card {
+        background-color: #E67C6C;
+        border-radius: 8px;
+        padding: 24px 32px;
+        max-width: 700px;
+        margin: 40px auto;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        color: white;
+    }
+
+    h1, h2, h3 {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    form {
+        margin-bottom: 32px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: bold;
+        color: white;
+    }
+
+    input[type="text"],
+    textarea {
+        width: 100%;
+        padding: 8px 10px;
+        border-radius: 6px;
+        border: none;
+        font-size: 14px;
+        box-sizing: border-box;
+        margin-bottom: 16px;
+    }
+
+    button.btn-primary {
+        background-color: #D95A49;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        display: block;
+        margin: 0 auto;
+    }
+
+        button.btn-primary:hover {
+            background-color: #BF4B3E;
+        }
+
+    hr {
+        border: 0;
+        border-top: 1px solid rgba(255,255,255,0.3);
+        margin: 32px 0;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+    }
+
+        ul li {
+            margin-bottom: 12px;
+        }
+
+            ul li a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 16px;
+                padding-bottom: 4px;
+                border-bottom: 1px solid white;
+            }
+
+                ul li a:hover {
+                    text-decoration: underline;
+                }
+
+    pre {
+        background-color: white;
+        color: black;
+        padding: 16px;
+        border-radius: 6px;
+        max-height: 300px;
+        overflow-y: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    p {
+        text-align: center;
+        font-style: italic;
+    }
+</style>
+
+<div class="turismo-card">
+    <h1>@ViewData["Title"]</h1>
+
+    <h2>Nova Anotação</h2>
+
+    <form method="post">
+        <div>
+            <label for="Title">Título do Arquivo (.txt)</label>
+            <input type="text" id="Title" name="Title" required />
+        </div>
+        <div>
+            <label for="Content">Conteúdo</label>
+            <textarea id="Content" name="Content" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+
+    <hr />
+
+    <h2>Arquivos Salvos</h2>
+
+    @if (Model.FileNames.Any())
+    {
+        <ul>
+            @foreach (var file in Model.FileNames)
+            {
+                <li>
+                    <a asp-page="./ViewNotes" asp-route-filename="@file">@file</a>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>Nenhuma anotação salva ainda.</p>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.FileContent))
+    {
+        <hr />
+        <h3>Conteúdo de: @Model.SelectedFile</h3>
+        <pre>@Model.FileContent</pre>
+    }
+</div>

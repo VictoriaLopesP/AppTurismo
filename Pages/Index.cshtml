@@ -1,0 +1,58 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<style>
+
+    body {
+        background-color: #ECD9C7;
+        margin: 0;
+        padding: 0;
+    }
+    .turismo-card {
+        background-color: #E67C6C;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        margin: 30px auto;
+        text-align: center;
+    }
+
+        .turismo-card h1 {
+            color: white;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 6px 6px 0 0;
+            margin: 0 0 16px 0;
+            text-align: center;
+        }
+
+        .turismo-card a {
+            display: block;
+            font-size: 16px;
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid white;
+        }
+
+            .turismo-card a:hover {
+                text-decoration: underline;
+            }
+</style>
+
+<div class="turismo-card">
+    <h1>Sistema de Turismo</h1>
+
+    <a asp-page="/Login/Login">Fazer Login</a>
+    <a asp-page="/Clientes/Index">Gerenciar Clientes</a>
+    <a asp-page="/PaisesDestino/Index">Gerenciar Países</a>
+    <a asp-page="/CidadesDestino/Index">Gerenciar Cidades</a>
+    <a asp-page="/PacotesTuristicos/Index">Gerenciar Pacotes Turísticos</a>
+    <a asp-page="/Reservas/Index">Gerenciar Reservas</a>
+    <a asp-page="/Notes/ViewNotes">Sistema de Anotações</a>
+</div>

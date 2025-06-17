@@ -1,0 +1,90 @@
+﻿@page
+@model AppTurismo.Pages.LoginModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<style>
+    body {
+        background-color: #ECD9C7;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .turismo-card {
+        background-color: #E67C6C;
+        border-radius: 8px;
+        padding: 24px 32px;
+        max-width: 400px;
+        margin: 40px auto;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        color: white;
+        text-align: center;
+    }
+
+        .turismo-card h2 {
+            font-size: 20px;
+            margin-bottom: 24px;
+        }
+
+    .form-group {
+        margin-bottom: 16px;
+        text-align: left;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: bold;
+    }
+
+    input.form-control {
+        width: 100%;
+        padding: 8px 10px;
+        border-radius: 4px;
+        border: none;
+        font-size: 16px;
+    }
+
+    button.btn-primary {
+        background-color: #E6A76C;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+        button.btn-primary:hover {
+            background-color: #E6916C;
+        }
+
+    .alert-danger {
+        background-color: #C94D4D;
+        color: white;
+        padding: 10px;
+        margin-top: 20px;
+        border-radius: 6px;
+    }
+</style>
+
+<div class="turismo-card">
+    <h2>Login</h2>
+
+    <form method="post">
+        <div class="form-group">
+            <label>Usuário:</label>
+            <input type="text" asp-for="Username" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Senha:</label>
+            <input type="password" asp-for="Password" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+    </form>
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger">@Model.ErrorMessage</div>
+    }
+</div>
